@@ -1,4 +1,4 @@
-package com.project.hackers.hackattack.UI;
+package com.project.hackers.hackattack.UI.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
