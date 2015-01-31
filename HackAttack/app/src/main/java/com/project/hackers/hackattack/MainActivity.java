@@ -1,6 +1,7 @@
 package com.project.hackers.hackattack;
 
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.hardware.Camera;
 import android.net.Uri;
 import android.os.Environment;
@@ -14,6 +15,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -77,21 +79,35 @@ public class MainActivity extends ActionBarActivity {
     }
 
     private static final int CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE = 100;
-    private Uri fileUri;
+    private Uri fileUri;//get an output media file.
+    Intent intent;
+
     public boolean openCamera(int id)
     {
-        Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         fileUri = getOutputMediaFileUri(MEDIA_TYPE_IMAGE); // create a file to save the image
         intent.putExtra(MediaStore.EXTRA_OUTPUT, fileUri); // set the image file name
 
         // start the image capture Intent
         startActivityForResult(intent, CAPTURE_IMAGE_ACTIVITY_REQUEST_CODE);
 
+
         boolean qOpened = true;
 
         return qOpened;
     }
 
+    static final int REQUEST_IMAGE_CAPTURE = 1;
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        if (requestCode == REQUEST_IMAGE_CAPTURE && resultCode == RESULT_OK) {
+            Bundle extras = data.getExtras();
+            Bitmap imageBitmap = (Bitmap) extras.get("data");
+            System.out.print("TEStst");
+//            mImageView.setImageBitmap(imageBitmap);
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu)
