@@ -1,4 +1,4 @@
-package com.project.hackers.hackattack.service;
+package com.project.hackers.hackattack.Service;
 
 /**
  * Created by athatscomp on 1/31/15.
