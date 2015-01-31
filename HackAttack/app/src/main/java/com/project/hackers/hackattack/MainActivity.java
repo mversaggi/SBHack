@@ -32,6 +32,8 @@ public class MainActivity extends ActionBarActivity {
 //                    .add(R.id.container, new PlaceholderFragment())
 //                    .commit();
 //        }
+        Parse.enableLocalDatastore(this);
+        Parse.initialize(this, "hlJmqbOFCRGUKFfPjDSEMs33DQPXju9NLClT1vsP", "HnkchJyEMtDbSzsYV8gfDl1k6sKwAU4rvl5VGSFF");
 
     }
     public static final int MEDIA_TYPE_IMAGE = 1;
