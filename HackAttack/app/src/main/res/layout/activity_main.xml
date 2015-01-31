@@ -2,8 +2,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
+    android:paddingLeft="8dp"
+    android:paddingRight="8dp"
+    android:paddingTop="8dp"
     android:orientation="vertical" >
 
     <!-- A CardView that contains a TextView -->
@@ -12,18 +13,18 @@
         android:id="@+id/card_view"
         android:layout_gravity="center"
         android:layout_width="match_parent"
-        android:layout_height="200dp"
+        android:layout_height="300dp"
         card_view:cardCornerRadius="4dp">
+
 
         <TextView
             android:id="@+id/info_text"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="match_parent"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="253dp"
+            android:textSize="24sp"
+            />
     </android.support.v7.widget.CardView>
-
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_gravity="right"></RelativeLayout>
 
 </LinearLayout>
