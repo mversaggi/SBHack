@@ -1,4 +1,4 @@
-package com.project.hackers.hackattack;
+package com.project.hackers.hackattack.UI;
 
 import android.content.Intent;
 import android.hardware.Camera;
@@ -15,6 +15,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.project.hackers.hackattack.R;
+
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -26,18 +28,17 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.list_item_layout);
 //        if (savedInstanceState == null) {
 //            getSupportFragmentManager().beginTransaction()
 //                    .add(R.id.container, new PlaceholderFragment())
 //                    .commit();
 //        }
-        Parse.enableLocalDatastore(this);
-        Parse.initialize(this, "hlJmqbOFCRGUKFfPjDSEMs33DQPXju9NLClT1vsP", "HnkchJyEMtDbSzsYV8gfDl1k6sKwAU4rvl5VGSFF");
 
     }
     public static final int MEDIA_TYPE_IMAGE = 1;
     public static final int MEDIA_TYPE_VIDEO = 2;
+
 
     /** Create a file Uri for saving an image or video */
     private static Uri getOutputMediaFileUri(int type){
