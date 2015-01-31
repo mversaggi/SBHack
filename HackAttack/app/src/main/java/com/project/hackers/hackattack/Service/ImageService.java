@@ -1,5 +1,7 @@
 package com.project.hackers.hackattack.Service;
 
+import com.parse.*;
+
 /**
  * Created by athatscomp on 1/31/15.
  */
@@ -29,10 +31,8 @@ public class ImageService
     public void getImage(){
 
     }
-    public void createGif(){
 
-    }
     public void postImage(){
-
+        ParseFile pf;
     }
 }
