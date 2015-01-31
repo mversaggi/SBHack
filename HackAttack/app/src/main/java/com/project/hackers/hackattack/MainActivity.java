@@ -1,41 +1,60 @@
 package com.project.hackers.hackattack;
 
+import android.hardware.Camera;
 import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
-import android.support.v7.widget.CardView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.os.Build;
-import android.widget.TextView;
 
 
 public class MainActivity extends ActionBarActivity {
-    private CardView cardView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.zink_layout);
+//        if (savedInstanceState == null) {
+//            getSupportFragmentManager().beginTransaction()
+//                    .add(R.id.container, new PlaceholderFragment())
+//                    .commit();
+//        }
 
-        setContentView(R.layout.activity_main);
-        cardView = (CardView) findViewById(R.id.card_view);
-        TextView textView = (TextView) findViewById(R.id.info_text);
-        textView.setText("This is the example text");
-
-        /*if (savedInstanceState == null) {
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.container, new PlaceholderFragment())
-                    .commit();
-        }*/
     }
 
+    private Camera mCamera;
+    public boolean openCamera(int id)
+    {
+        boolean qOpened = false;
+        try{
+//            releaseCameraAndPreview();
+            mCamera = Camera.open();
+            qOpened = (mCamera != null);
+        }
+        catch(Exception e)
+        {
+            Log.e(getString(R.string.app_name), "failed to open camera = jjl");
+            e.printStackTrace();
+        }
 
+        return qOpened;
+    }
+
+    private void releaseCameraAndPreview() {
+//        mPreview.setCamera(null);
+        if (mCamera != null) {
+            mCamera.release();
+            mCamera = null;
+        }
+    }
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    public boolean onCreateOptionsMenu(Menu menu)
+    {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
@@ -47,11 +66,18 @@ public class MainActivity extends ActionBarActivity {
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
+    System.out.println("ID " + id);
+        switch(item.getItemId()) {
+            case R.id.camera_button:
+                this.openCamera(item.getItemId());
+                break;
+            default:
+                break;
         }
+//        //noinspection SimplifiableIfStatement
+//        if (id == R.id.action_settings) {
+//            return true;
+//        }
 
         return super.onOptionsItemSelected(item);
     }
