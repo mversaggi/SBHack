@@ -2,6 +2,11 @@ package com.project.hackers.hackattack.Service;
 
 import com.parse.*;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
 /**
  * Created by athatscomp on 1/31/15.
  */
@@ -32,7 +37,26 @@ public class ImageService
 
     }
 
-    public void postImage(){
+    public void postImage(File image){
+        FileInputStream in;
         ParseFile pf;
+        byte[] arr;
+
+        try {
+            in = new FileInputStream(image);
+            arr = new byte[in.available()];
+            in.read(arr);
+        }
+        catch (FileNotFoundException e) {
+            System.err.println("Image not found");
+            return;
+        }
+        catch (IOException io) {
+            System.err.println("Input Stream Unavailable");
+            return;
+        }
+
+        pf = new ParseFile(image.getName(), arr);
+        pf.saveInBackground();
     }
 }
