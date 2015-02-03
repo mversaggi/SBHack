@@ -1,6 +1,10 @@
 package com.project.hackers.hackattack.Service;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+
 import com.parse.*;
+import com.project.hackers.hackattack.R;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -33,8 +37,9 @@ public class ImageService
         return serviceInstance;
     }
 
-    public void getImage(){
-
+    public Bitmap getImage(String url)
+    {
+        return null;//BitmapFactory.decodeResource(Application.getResources(), R.drawable.camera);
     }
 
     public void postImage(File image){

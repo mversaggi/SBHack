@@ -1,6 +1,7 @@
 package com.project.hackers.hackattack.datastructure;
 
 import android.graphics.Point;
+import android.graphics.PointF;
 
 import java.util.Date;
 
@@ -11,13 +12,13 @@ public class Post
 {
 
 
-    private Point location;
+    private PointF location;
     private String imageUrl;
     private String info;
     private double popularity;
     private Date timeCaptured;
 
-    public Post(Point location, String imageUrl, String info, double popularity, Date timeCaptured)
+    public Post(PointF location, String imageUrl, String info, double popularity, Date timeCaptured)
     {
         this.location = location;
         this.imageUrl = imageUrl;
@@ -37,12 +38,12 @@ public class Post
         this.timeCaptured = timeCaptured;
     }
 
-    public Point getLocation()
+    public PointF getLocation()
     {
         return location;
     }
 
-    public void setLocation(Point location)
+    public void setLocation(PointF location)
     {
         this.location = location;
     }

@@ -1,13 +1,20 @@
-package com.project.hackers.hackattack.UI.Fragment;
+package com.project.hackers.hackattack.UI;
 
 import android.app.Activity;
+import android.app.ListActivity;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+import android.widget.TextView;
 
 import com.project.hackers.hackattack.R;
+import com.project.hackers.hackattack.datastructure.Post;
+import com.project.hackers.hackattack.Service.ListService;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -24,12 +31,9 @@ public class Popular extends Fragment
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
      * @return A new instance of fragment Popular.
      */
-    // TODO: Rename and change types and number of parameters
-    public static Popular newInstance(String param1, String param2)
+    public static Popular newInstance()
     {
         Popular fragment = new Popular();
         Bundle args = new Bundle();
@@ -70,6 +74,38 @@ public class Popular extends Fragment
     public void onDetach()
     {
         super.onDetach();
+    }
+
+    public void onActivityCreated(Bundle bundle){
+        super.onActivityCreated(bundle);
+
+        ListView list = (ListView)getActivity().findViewById(R.id.postList);
+        list.setAdapter(new PostAdapter());
+
+    }
+
+    private class PostAdapter extends ArrayAdapter<Post>
+    {
+        /**
+         *only instantiate this class once the list is ready
+         */
+        public PostAdapter() {
+            super(getActivity(),R.layout.list_item_layout, ListService.getInstance().getPopularlist(false));
+
+        }
+        @Override
+        public View getView(int position, View convertView, ViewGroup parent) {
+            View view = convertView;
+            if (view == null){
+                LayoutInflater inflater = (LayoutInflater) getActivity()
+                        .getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+                view = inflater.inflate(R.layout.list_item_layout, parent, false
+                );
+                TextView tv = (TextView)view.findViewById(R.id.info_text);
+                tv.setText(getItem(position).getInfo());
+            }
+            return view;
+        }
     }
 
 }

@@ -1,8 +1,12 @@
 package com.project.hackers.hackattack.Service;
 
+import android.graphics.Point;
+import android.graphics.PointF;
+
 import com.project.hackers.hackattack.datastructure.Post;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Created by athatscomp on 1/31/15.
@@ -40,7 +44,14 @@ public class ListService
         //TODO implement the asynchronous process from parse
         //Simple ArrayList to test the front end
         ArrayList<Post> list = new ArrayList<Post>();
+        for (int i = 0; i < 5; i++)
+        {
+            PointF point = new PointF(3.5f + i , 1.0f + i);
 
+            Post post = new Post(point,"url","info",300,new Date());
+
+            list.add(post);
+        }
         return list;
     }
 }

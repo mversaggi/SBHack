@@ -17,6 +17,7 @@ import android.view.ViewGroup;
 import android.widget.Toast;
 
 import com.project.hackers.hackattack.R;
+import com.project.hackers.hackattack.UI.Popular;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -29,12 +30,12 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.list_item_layout);
-//        if (savedInstanceState == null) {
-//            getSupportFragmentManager().beginTransaction()
-//                    .add(R.id.container, new PlaceholderFragment())
-//                    .commit();
-//        }
+        setContentView(R.layout.main_activity_layout);
+        if (savedInstanceState == null) {
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.container, Popular.newInstance())
+                    .commit();
+        }
 
     }
     public static final int MEDIA_TYPE_IMAGE = 1;
@@ -155,19 +156,5 @@ public class MainActivity extends ActionBarActivity {
             }
         }
     }
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    public static class PlaceholderFragment extends Fragment {
 
-        public PlaceholderFragment() {
-        }
-
-        @Override
-        public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                                 Bundle savedInstanceState) {
-            View rootView = inflater.inflate(R.layout.fragment_popular, container, false);
-            return rootView;
-        }
-    }
 }
